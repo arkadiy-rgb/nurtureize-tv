@@ -1,4 +1,4 @@
-const { ipcMain, desktopCapturer, dialog, shell } = require('electron');
+const { app, ipcMain, desktopCapturer, dialog, shell } = require('electron');
 const path = require('path');
 const store = require('./store');
 const recordings = require('./recordings');
@@ -109,6 +109,8 @@ function registerIpc() {
   });
 
   ipcMain.handle('editor:open', (_e, id) => { windows.createEditorWindow(id); });
+
+  ipcMain.handle('app:get-version', () => app.getVersion());
 }
 
 module.exports = { registerIpc };

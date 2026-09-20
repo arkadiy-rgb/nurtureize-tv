@@ -20,6 +20,7 @@ const INVOKE_CHANNELS = [
   'library:hide',
   'library:show',
   'editor:open',
+  'app:get-version',
 ];
 
 const LISTEN_CHANNELS = ['library:refresh'];
