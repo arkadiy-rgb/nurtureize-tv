@@ -1,0 +1,36 @@
+{
+  "name": "nurtureize-tv",
+  "productName": "Nurtureize Studio",
+  "version": "0.1.0",
+  "description": "Local screen + camera recorder and editor, built on the Nurtureize brand system.",
+  "main": "src/main/main.js",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "dist:mac": "electron-builder --mac",
+    "dist:win": "electron-builder --win"
+  },
+  "devDependencies": {
+    "electron": "^31.0.0",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "tv.nurtureize.studio",
+    "productName": "Nurtureize Studio",
+    "files": [
+      "src/**/*",
+      "package.json"
+    ],
+    "mac": {
+      "category": "public.app-category.video",
+      "target": "dmg",
+      "extendInfo": {
+        "NSCameraUsageDescription": "Nurtureize Studio needs camera access to record your webcam.",
+        "NSMicrophoneUsageDescription": "Nurtureize Studio needs microphone access to record narration."
+      }
+    },
+    "win": {
+      "target": "nsis"
+    }
+  }
+}

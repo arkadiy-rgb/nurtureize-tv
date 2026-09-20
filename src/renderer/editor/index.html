@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="../shared/theme.css" />
+  <link rel="stylesheet" href="editor.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <img src="../shared/logo.svg" width="26" height="26" alt="" />
+      <span id="recTitle" class="brand-title" style="font-size:15px;">Loading&hellip;</span>
+    </div>
+    <div class="top-actions">
+      <span id="exportStatus" class="export-status"></span>
+      <button id="exportBtn" class="pill-btn primary">Export video</button>
+    </div>
+  </header>
+
+  <div class="workspace">
+    <div class="stage-col">
+      <div id="stage" class="stage">
+        <canvas id="canvas"></canvas>
+        <div id="screenBox" class="layer-box screen-box">
+          <div class="box-label">Screen</div>
+          <div class="resize-handle" data-handle="screen"></div>
+        </div>
+        <div id="cameraBox" class="layer-box camera-box">
+          <div class="box-label">Camera</div>
+          <div class="resize-handle" data-handle="camera"></div>
+        </div>
+      </div>
+
+      <div class="transport">
+        <button id="playBtn" class="icon-btn" title="Play/Pause">▶</button>
+        <span id="timeLabel" class="time-label">00:00 / 00:00</span>
+      </div>
+
+      <div id="timeline" class="timeline">
+        <div id="timelineTrack" class="timeline-track">
+          <div id="trimShadeLeft" class="trim-shade"></div>
+          <div id="trimShadeRight" class="trim-shade"></div>
+          <div id="cutoutLayer" class="cutout-layer"></div>
+          <div id="playhead" class="playhead"></div>
+          <div id="trimStartHandle" class="trim-handle left">◀</div>
+          <div id="trimEndHandle" class="trim-handle right">▶</div>
+        </div>
+      </div>
+      <div class="timeline-actions">
+        <button id="addCutoutBtn" class="pill-btn">✂ Mark cutout (drag on timeline)</button>
+        <div id="cutoutList" class="cutout-list"></div>
+      </div>
+    </div>
+
+    <aside class="panel">
+      <div class="panel-section">
+        <h3>Background</h3>
+        <div id="bgSwatches" class="swatches"></div>
+        <div class="row-gap">
+          <input type="color" id="bgColorPicker" value="#0d1b2a" />
+          <button id="bgImageBtn" class="pill-btn">Upload image&hellip;</button>
+          <input type="file" id="bgImageInput" accept="image/*" class="hidden" />
+        </div>
+      </div>
+
+      <div class="panel-section">
+        <h3>Camera</h3>
+        <div id="cameraDisabledNote" class="muted-note hidden">This recording has no camera track.</div>
+        <div id="cameraControls">
+          <label class="check-row"><input type="checkbox" id="cameraEnabled" checked /> Show camera</label>
+          <div class="shape-row">
+            <button class="pill-btn shape-btn" data-shape="circle">Circle</button>
+            <button class="pill-btn shape-btn" data-shape="rounded">Rounded</button>
+            <button class="pill-btn shape-btn" data-shape="square">Square</button>
+          </div>
+          <label class="slider-row">Size
+            <input type="range" id="cameraSize" min="80" max="600" />
+          </label>
+        </div>
+      </div>
+
+      <div class="panel-section">
+        <h3>Screen recording</h3>
+        <button id="resetScreenBtn" class="pill-btn">Reset to full frame</button>
+      </div>
+    </aside>
+  </div>
+
+  <video id="screenVideo" class="hidden-media" muted playsinline></video>
+  <video id="camVideo" class="hidden-media" playsinline></video>
+
+  <script src="compositor.js"></script>
+  <script src="timeline.js"></script>
+  <script src="editor.js"></script>
+</body>
+</html>

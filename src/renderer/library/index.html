@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="../shared/theme.css" />
+  <link rel="stylesheet" href="library.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <img src="../shared/logo.svg" width="32" height="32" alt="" />
+      <span class="brand-title" style="font-size:20px;">NURTUREIZE <span class="brand-accent">STUDIO</span></span>
+    </div>
+    <div class="folder-row">
+      <span class="folder-label">Saving to</span>
+      <span id="folderPath" class="folder-path">&mdash;</span>
+      <button id="changeFolderBtn" class="pill-btn">Change</button>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="hero">
+      <div>
+        <h1 class="hero-title">Record, edit, and share &mdash; all local.</h1>
+        <p class="hero-sub">Screen or window or a custom region, plus your camera as its own track you can style afterward.</p>
+      </div>
+      <button id="recordBtn" class="pill-btn primary record-cta">● &nbsp;New Recording</button>
+    </div>
+
+    <section>
+      <h2 class="section-title">Your recordings</h2>
+      <div id="empty" class="empty hidden">
+        <p>No recordings yet. Hit <b>New Recording</b> to make your first one.</p>
+      </div>
+      <div id="grid" class="grid"></div>
+    </section>
+  </main>
+
+  <script src="library.js"></script>
+</body>
+</html>

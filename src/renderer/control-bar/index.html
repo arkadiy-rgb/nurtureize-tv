@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="../shared/theme.css" />
+  <link rel="stylesheet" href="control-bar.css" />
+</head>
+<body>
+  <div id="bar" class="bar">
+    <div id="setupRow" class="row">
+      <div class="source-wrap">
+        <button id="sourceBtn" class="pill-btn source-btn">🖥&nbsp; Full Screen</button>
+        <div id="sourceMenu" class="menu hidden">
+          <div class="menu-section">
+            <div class="menu-label">Full screen</div>
+            <div id="screenList" class="menu-list"></div>
+          </div>
+          <div class="menu-section">
+            <div class="menu-label">Window</div>
+            <div id="windowList" class="menu-list"></div>
+          </div>
+          <div class="menu-section">
+            <button id="regionOption" class="menu-item">⬚&nbsp; Custom region&hellip;</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <button id="camBtn" class="icon-btn active" title="Camera">🎥</button>
+      <button id="micBtn" class="icon-btn active" title="Microphone">🎙</button>
+
+      <div class="divider"></div>
+
+      <button id="recordBtn" class="pill-btn primary record-cta">● &nbsp;Record</button>
+      <button id="closeBtn" class="icon-btn" title="Close">✕</button>
+    </div>
+
+    <div id="recordingRow" class="row hidden">
+      <span id="recDot" class="rec-dot"></span>
+      <span id="timer" class="timer">00:00</span>
+      <div class="divider"></div>
+      <button id="camBtn2" class="icon-btn" title="Toggle camera">🎥</button>
+      <button id="micBtn2" class="icon-btn" title="Toggle microphone">🎙</button>
+      <div class="divider"></div>
+      <button id="pauseBtn" class="icon-btn" title="Pause">⏸</button>
+      <button id="stopBtn" class="pill-btn danger">■ &nbsp;Stop</button>
+    </div>
+
+    <div id="savingRow" class="row hidden">
+      <span class="saving-text">Saving recording&hellip;</span>
+    </div>
+  </div>
+  <script src="control-bar.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+html, body { background: transparent; overflow: hidden; }
+
+.bar {
+  margin: 6px;
+  background: rgba(13, 27, 42, 0.92);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+  padding: 8px 10px;
+  display: flex;
+  align-items: center;
+  -webkit-app-region: drag;
+}
+
+.bar * { -webkit-app-region: no-drag; }
+
+.row { display: flex; align-items: center; gap: 8px; width: 100%; }
+.hidden { display: none !important; }
+
+.divider { width: 1px; height: 24px; background: var(--line); margin: 0 2px; }
+
+.source-wrap { position: relative; }
+.source-btn { white-space: nowrap; }
+
+.menu {
+  position: absolute;
+  top: 46px;
+  left: 0;
+  width: 320px;
+  max-height: 360px;
+  overflow-y: auto;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 10px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+  z-index: 10;
+}
+.menu-section + .menu-section { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--line); }
+.menu-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gray); margin-bottom: 6px; font-weight: 600; }
+.menu-list { display: flex; flex-direction: column; gap: 4px; max-height: 160px; overflow-y: auto; }
+.menu-item {
+  display: flex; align-items: center; gap: 8px; width: 100%;
+  background: transparent; color: var(--off-white); text-align: left;
+  padding: 8px 10px; border-radius: 8px; font-size: 13px;
+}
+.menu-item:hover { background: var(--card-hover); }
+.menu-item img { width: 40px; height: 24px; object-fit: cover; border-radius: 3px; border: 1px solid var(--line); }
+.menu-item span.name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.record-cta { font-weight: 700; white-space: nowrap; }
+
+.rec-dot {
+  width: 9px; height: 9px; border-radius: 50%; background: #ff3b30;
+  animation: pulse 1.4s infinite;
+}
+.timer { font-family: var(--font-mono); font-size: 13px; color: var(--off-white); min-width: 42px; }
+
+.saving-text { font-size: 13px; color: var(--lgray); padding: 0 12px; }
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.25; }
+}
