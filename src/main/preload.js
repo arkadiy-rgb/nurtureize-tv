@@ -16,6 +16,7 @@ const INVOKE_CHANNELS = [
   'recording:reveal',
   'control-bar:open',
   'control-bar:close',
+  'control-bar:resize',
   'library:hide',
   'library:show',
   'editor:open',

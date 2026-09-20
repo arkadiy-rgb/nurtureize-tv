@@ -72,6 +72,18 @@ function getControlBar() {
   return controlBarWin;
 }
 
+// Electron windows clip their contents to their own physical bounds — a
+// dropdown can't render "outside" a small frameless window the way it would
+// overflow a normal web page. The control bar starts just tall enough for
+// its pill, then grows/shrinks on demand to fit the source-picker dropdown.
+function resizeControlBar(height) {
+  if (!controlBarWin || controlBarWin.isDestroyed()) return;
+  const bounds = controlBarWin.getBounds();
+  // setBounds (vs. setSize) reliably shrinks as well as grows — setSize was
+  // observed to grow fine but not shrink back down on some window managers.
+  controlBarWin.setBounds({ x: bounds.x, y: bounds.y, width: bounds.width, height: Math.round(height) });
+}
+
 function closeControlBar() {
   if (controlBarWin && !controlBarWin.isDestroyed()) controlBarWin.close();
   controlBarWin = null;
@@ -133,7 +145,7 @@ function createEditorWindow(recordingId) {
 
 module.exports = {
   createLibraryWindow, getLibraryWindow,
-  createControlBar, getControlBar, closeControlBar,
+  createControlBar, getControlBar, closeControlBar, resizeControlBar,
   openRegionPicker, closeRegionPicker,
   createEditorWindow,
 };

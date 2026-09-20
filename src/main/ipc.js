@@ -97,6 +97,7 @@ function registerIpc() {
 
   ipcMain.handle('control-bar:open', () => { windows.createControlBar(); });
   ipcMain.handle('control-bar:close', () => { windows.closeControlBar(); });
+  ipcMain.handle('control-bar:resize', (_e, height) => { windows.resizeControlBar(height); });
 
   ipcMain.handle('library:hide', () => {
     const win = windows.getLibraryWindow();

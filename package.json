@@ -1,7 +1,7 @@
 {
   "name": "nurtureize-tv",
   "productName": "Nurtureize Studio",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Local screen + camera recorder and editor, built on the Nurtureize brand system.",
   "main": "src/main/main.js",
   "private": true,

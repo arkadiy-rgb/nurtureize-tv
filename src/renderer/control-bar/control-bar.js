@@ -42,6 +42,21 @@ let phaseStartedAt = 0;
 let timerInterval = null;
 
 // ---- Source menu ----
+const BASE_HEIGHT = 64;
+
+// The control bar's OS window is only as tall as the pill itself — Electron
+// clips content to the window's own bounds, so a dropdown can't just overflow
+// it the way it would on a normal web page. Grow the window to fit the menu
+// while it's open, shrink it back when it closes.
+function syncWindowHeight() {
+  if (sourceMenu.classList.contains('hidden')) {
+    api.invoke('control-bar:resize', BASE_HEIGHT);
+    return;
+  }
+  const bottom = sourceMenu.getBoundingClientRect().bottom;
+  api.invoke('control-bar:resize', bottom + 12);
+}
+
 async function refreshSources() {
   const sources = await api.invoke('sources:get');
   screenList.innerHTML = '';
@@ -53,6 +68,7 @@ async function refreshSources() {
   sources.filter((s) => s.type === 'window').forEach((s) => {
     windowList.appendChild(sourceMenuItem(s, '🪟'));
   });
+  syncWindowHeight();
 }
 
 function sourceMenuItem(source, icon) {
@@ -77,10 +93,14 @@ function setSourceLabel(label) {
   sourceBtn.textContent = label;
 }
 
-function closeMenu() { sourceMenu.classList.add('hidden'); }
+function closeMenu() {
+  sourceMenu.classList.add('hidden');
+  syncWindowHeight();
+}
 function toggleMenu() {
   sourceMenu.classList.toggle('hidden');
   if (!sourceMenu.classList.contains('hidden')) refreshSources();
+  else syncWindowHeight();
 }
 
 sourceBtn.addEventListener('click', toggleMenu);
